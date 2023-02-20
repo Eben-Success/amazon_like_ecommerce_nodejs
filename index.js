@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 
 dbConnect();
 
-// Middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -16,6 +15,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // Routes
 app.use("/api/user", authRouter);
+
+// Middlewares
+app.use(notFound)
+app.use(errorHandler);
 
 
 app.listen(PORT, () => {
